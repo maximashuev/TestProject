@@ -9,11 +9,6 @@ from Pages.LoginPage import LoginPage
 class TestLoginPage:
 
     def test_login_button_is_present(self):
-        # options = webdriver.ChromeOptions()
-        # options.headless = True
-        # # options.add_argument('--headless')
-        # driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
-        # self.driver.implicitly_wait(5)
 
         login_page = LoginPage(self.driver)
         is_visible = login_page.is_visible(login_page.sing_in_button)
@@ -21,14 +16,8 @@ class TestLoginPage:
         assert is_visible == True
 
     def test_login_button_text_as_expected(self):
-        # options = webdriver.ChromeOptions()
-        # options.headless = True
-        # # options.add_argument('--headless')
-        # driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
-        # driver.implicitly_wait(5)
 
-        assert LoginPage(self.driver).get_element_text(LoginPage.sing_in_button) == 'Sign in'
+        assert LoginPage(self.driver).get_element_text(LoginPage.sing_in_button) == 'Sign in with Google'
 
-    # def test_login_successfully(self):
-    #
-    #     LoginPage(self.driver).login(LoginPage.username, LoginPage.password)
+    def test_login_button_clickable(self):
+        LoginPage(self.driver).login(LoginPage.username,LoginPage.password)

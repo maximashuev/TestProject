@@ -4,13 +4,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
 
-@pytest.fixture(params=['chrome','firefox'], scope='class')
+@pytest.fixture(params=['chrome'], scope='class')
 def init_driver(request):
-    driver = None
+    # driver = None
     if request.param == 'chrome':
         options = webdriver.ChromeOptions()
         # options.headless = True
-        options.add_argument('--headless')
+        # options.add_argument('--headless')
         driver = webdriver.Chrome(ChromeDriverManager().install(),options=options)
         driver.implicitly_wait(5)
 
@@ -23,4 +23,4 @@ def init_driver(request):
 
     request.cls.driver = driver
     yield
-    driver.quit()
+    # driver.quit()

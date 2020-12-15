@@ -2,7 +2,7 @@
 
 class TestData:
 
-    BASE_URL = 'https://www.dropbox.com'
+    BASE_URL = 'https://www.dropbox.com/login'
 
-    username = 'test'
-    password = 'pass'
+    username = 'uralo7890@gmail.com'
+    password = '12345678'

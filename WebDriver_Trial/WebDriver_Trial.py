@@ -21,6 +21,7 @@ else:
     print('вап')
     raise Exception
 
+
 driver.implicitly_wait(5)
 
 driver.get('https://google.com')
@@ -28,8 +29,10 @@ print(driver.title)
 
 search_field = driver.find_element(By.NAME,'q')
 search_field.send_keys('selenium')
+time.sleep(3)
+# option_list = driver.find_elements(By.CSS_SELECTOR,'ul.erkvQe li span')
+option_list = driver.find_elements(By.XPATH ,"//div[@class='sbl1']")
 
-option_list = driver.find_elements(By.CSS_SELECTOR,'ul.erkvQe li span')
 print(len(option_list))
 
 for element in option_list:

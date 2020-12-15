@@ -8,14 +8,18 @@ from webdriver_manager.firefox import GeckoDriverManager
 def init_driver(request):
     driver = None
     if request.param == 'chrome':
-        # options = webdriver.ChromeOptions()
+        options = webdriver.ChromeOptions()
         # options.headless = True
-        # options.add_argument('--headless')
-        driver = webdriver.Chrome(ChromeDriverManager().install())
+        options.add_argument('--headless')
+        driver = webdriver.Chrome(ChromeDriverManager().install(),options=options)
+        driver.implicitly_wait(5)
+
     elif request.param == 'firefox':
-        # options = webdriver.FirefoxOptions()
-        # options.add_argument('--headless')
-        driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
+        options = webdriver.FirefoxOptions()
+        options.add_argument('--headless')
+        driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(),options=options)
+        driver.implicitly_wait(5)
+
 
     request.cls.driver = driver
     yield

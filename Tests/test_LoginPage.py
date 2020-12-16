@@ -17,7 +17,8 @@ class TestLoginPage:
 
     def test_login_button_text_as_expected(self):
 
-        assert LoginPage(self.driver).get_element_text(LoginPage.sing_in_button) == 'Sign in with Google'
+        assert LoginPage(self.driver).get_element_text(LoginPage.sing_in_button) == 'Sign in'
 
-    def test_login_button_clickable(self):
-        LoginPage(self.driver).login(LoginPage.username,LoginPage.password)
+    def test_login_successful(self):
+        assert LoginPage(self.driver).login(LoginPage.username,LoginPage.password) == True
+

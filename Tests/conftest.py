@@ -6,21 +6,21 @@ from webdriver_manager.firefox import GeckoDriverManager
 
 @pytest.fixture(params=['chrome'], scope='class')
 def init_driver(request):
-    # driver = None
+    driver = None
     if request.param == 'chrome':
         options = webdriver.ChromeOptions()
         # options.headless = True
         # options.add_argument('--headless')
-        driver = webdriver.Chrome(ChromeDriverManager().install(),options=options)
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+        driver.maximize_window()
         driver.implicitly_wait(5)
 
     elif request.param == 'firefox':
         options = webdriver.FirefoxOptions()
         options.add_argument('--headless')
-        driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(),options=options)
+        driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=options)
         driver.implicitly_wait(5)
-
 
     request.cls.driver = driver
     yield
-    # driver.quit()
+    driver.quit()

@@ -15,7 +15,7 @@ def init_driver(request):
         driver.maximize_window()
         driver.implicitly_wait(5)
 
-    elif request.param == 'firefox':
+    if request.param == 'firefox':
         options = webdriver.FirefoxOptions()
         options.add_argument('--headless')
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=options)

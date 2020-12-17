@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-
+from Config.TestData import TestData
 from Pages.LoginPage import LoginPage
 
 
@@ -9,16 +9,14 @@ from Pages.LoginPage import LoginPage
 class TestLoginPage:
 
     def test_login_button_is_present(self):
-
         login_page = LoginPage(self.driver)
-        is_visible = login_page.is_visible(login_page.sing_in_button)
+        is_visible = login_page.is_visible(login_page.SIGH_IN_BUTTON)
 
         assert is_visible == True
 
     def test_login_button_text_as_expected(self):
 
-        assert LoginPage(self.driver).get_element_text(LoginPage.sing_in_button) == 'Sign in'
+        assert LoginPage(self.driver).get_element_text(LoginPage.SIGH_IN_BUTTON) == 'Sign in'
 
-    def test_login_successful(self):
-        assert LoginPage(self.driver).login(LoginPage.username,LoginPage.password) == True
-
+    def test_login(self):
+        LoginPage(self.driver).login(TestData.username,TestData.password)

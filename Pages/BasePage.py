@@ -25,5 +25,17 @@ class BasePage:
 
     def is_visible(self, by_locator):
         condition = EC.visibility_of_element_located(by_locator)
-        element= WebDriverWait(self.driver, self.timeout).until(condition)
+        element = WebDriverWait(self.driver, self.timeout).until(condition)
         return bool(element)
+
+    def get_title(self, title):
+        condition = EC.title_is(title)
+        WebDriverWait(self.driver, self.timeout).until(condition)
+        return self.driver.title
+
+    def get_menu_items(self, by_locator):
+        condition = EC.visibility_of_all_elements_located(by_locator)
+        menu_items_list= WebDriverWait(self.driver, self.timeout).until(condition)
+
+        return menu_items_list
+

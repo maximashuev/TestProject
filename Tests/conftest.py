@@ -10,7 +10,7 @@ def init_driver(request):
     if request.param == 'chrome':
         options = webdriver.ChromeOptions()
         # options.headless = True
-        # options.add_argument('--headless')
+        options.add_argument('--headless')
         driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
         driver.maximize_window()
         driver.implicitly_wait(5)
